@@ -1,75 +1,75 @@
-# React + TypeScript + Vite
+# Resource Centre
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive resource centre built with React and TypeScript. It allows users to browse resources by category, search by title or tags, sort resources, and view individual resource details.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse resources grouped by category by default.
+- Search resources by title or tags.
+- Sort resources alphabetically by category or by upload date, newest first.
+- View individual resource details, including description, tags, category, duration, and upload date.
+- Responsive card layout for different screen sizes.
+- Accessible form labels and semantic HTML.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- React Router
+- CSS Modules
+- Vite
+- Vitest & React Testing Library
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository and install the dependencies:
 
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Run the development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+Open the local URL displayed in the terminal.
+
+### Run tests
+
+```bash
+npm run test
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+## Implementation Notes
+
+- Resource data is stored in mock data, making it easy to replace with an API in the future.
+- Filtering, sorting, and grouping are handled by separate utility functions to keep the UI components focused on presentation.
+- The default view groups resources by category. Selecting a sort option displays all matching resources in a single grid.
+- React Router provides individual resource URLs and supports browser navigation.
+- CSS Modules scope component styles and reduce the risk of naming conflicts.
+
+## Testing
+
+Tests cover the core resource utilities, including filtering by title and tags, category and date sorting, and resource grouping.
+
+Component tests cover key user interactions and resource detail behaviour.
+
+## Assumptions and Future Improvements
+
+- Resource data is currently mocked rather than retrieved from an API.
+- Future improvements could include API integration, pagination for larger collections, and additional filtering options.
