@@ -1,0 +1,13 @@
+.sortWrapper {
+  display: flex;
+  gap: var(--spacing-0x5);
+  align-items: center;
+}
+
+.sortInput {
+  padding: var(--spacing-0x5);
+  outline: none;
+  &:focus-visible {
+    outline: solid var(--border-2) var(--dark-blue);
+  }
+}

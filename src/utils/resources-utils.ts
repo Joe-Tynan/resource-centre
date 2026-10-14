@@ -41,3 +41,10 @@ export const filterResources = (
     return titleMatches || tagMatches;
   });
 };
+
+export const sortResources = (
+  resources: TResource[],
+  sortBy: string,
+): TResource[] => {
+  return [...resources];
+};

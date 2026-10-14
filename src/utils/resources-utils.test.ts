@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { filterResources, groupResources } from "./resources-utils";
+import {
+  filterResources,
+  groupResources,
+  sortResources,
+} from "./resources-utils";
 import type { TResource } from "../types/global-types";
 
 const resources: TResource[] = [
@@ -89,5 +93,31 @@ describe("filterResources", () => {
 
   it("returns no resources when nothing matches", () => {
     expect(filterResources(resources, "gardening")).toEqual([]);
+  });
+});
+
+describe("sortResources", () => {
+  it("sorts resources by category alphabetically", () => {
+    const result = sortResources(resources, "category");
+
+    expect(result.map((resource) => resource.category)).toEqual([
+      "Articles",
+      "Articles",
+      "Podcasts",
+    ]);
+  });
+
+  it("sorts resources by date, newest first", () => {
+    const result = sortResources(resources, "date");
+
+    expect(result.map((resource) => resource.id)).toEqual(["3", "2", "1"]);
+  });
+
+  it("does not mutate the original array", () => {
+    const original = [...resources];
+
+    sortResources(resources, "date");
+
+    expect(resources).toEqual(original);
   });
 });
