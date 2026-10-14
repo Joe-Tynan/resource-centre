@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { groupResources } from "./resources-utils";
+import { filterResources, groupResources } from "./resources-utils";
 import type { TResource } from "../types/global-types";
 
 describe("groupResources", () => {
@@ -59,6 +59,37 @@ describe("groupResources", () => {
 
     it("returns an empty object when given no resources", () => {
       expect(groupResources([])).toEqual({});
+    });
+  });
+
+  describe("filterResources", () => {
+    it("filters resources by title", () => {
+      const result = filterResources(resources, "mindful");
+
+      expect(result).toHaveLength(1);
+      expect(result[0].id).toBe("1");
+    });
+
+    it("filters resources by tag", () => {
+      const result = filterResources(resources, "exercise");
+
+      expect(result).toHaveLength(1);
+      expect(result[0].id).toBe("2");
+    });
+
+    it("matches regardless of letter casing", () => {
+      const result = filterResources(resources, "FITNESS");
+
+      expect(result).toHaveLength(1);
+      expect(result[0].id).toBe("2");
+    });
+
+    it("returns all resources when the search is empty", () => {
+      expect(filterResources(resources, "")).toEqual(resources);
+    });
+
+    it("returns no resources when nothing matches", () => {
+      expect(filterResources(resources, "gardening")).toEqual([]);
     });
   });
 });

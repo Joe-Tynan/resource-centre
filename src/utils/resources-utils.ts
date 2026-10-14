@@ -19,3 +19,10 @@ export const groupResources = (resources: TResource[]): TGroupedResources => {
 
   return groupedResources;
 };
+
+export const filterResources = (
+  resources: TResource[],
+  searchTerm: string,
+): TResource[] => {
+  return resources;
+};
