@@ -24,5 +24,20 @@ export const filterResources = (
   resources: TResource[],
   searchTerm: string,
 ): TResource[] => {
-  return resources;
+  const search = searchTerm.trim().toLowerCase();
+
+  // Return all resources if search is empty
+  if (!search) {
+    return resources;
+  }
+
+  // If it's not empty filter the resources for any where the title or tag includes the search term
+  return resources.filter((resource) => {
+    const titleMatches = resource.title.toLowerCase().includes(search);
+    const tagMatches = resource.tags.some((tag) =>
+      tag.toLowerCase().includes(search),
+    );
+
+    return titleMatches || tagMatches;
+  });
 };
