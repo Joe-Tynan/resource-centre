@@ -1,0 +1,50 @@
+.link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+
+    .article {
+      outline: solid var(--border-4) var(--dark-blue);
+    }
+  }
+}
+
+.article {
+  background-color: #ffffff;
+  border-radius: var(--border-radius-1);
+  overflow: hidden;
+  border: var(--border-1) solid var(--border-light);
+}
+
+.thumbnail {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1x5);
+  padding: var(--spacing-1x5);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title,
+.duration {
+  margin: 0;
+}
+
+.readMoreLink {
+  font-weight: 600;
+  margin: 0;
+}

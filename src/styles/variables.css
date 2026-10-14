@@ -1,0 +1,25 @@
+:root {
+  /* Colours */
+  --background: #f1f5f5;
+  --border-light: #dce5e5;
+  --dark-blue: #00476b;
+
+  /* Fonts */
+  --font-family-primary: "Rubik", sans-serif;
+
+  /* Spacing */
+  --spacing-0x5: 0.5rem;
+  --spacing-1x5: 1.5rem;
+  --spacing-1: 1rem;
+  --spacing-2: 2rem;
+  --spacing-4: 4rem;
+  --spacing-8: 8rem;
+
+  /* Borders */
+  --border-1: 1px;
+  --border-2: 2px;
+  --border-4: 4px;
+
+  --border-radius-0x25: 0.25rem;
+  --border-radius-1: 1rem;
+}
