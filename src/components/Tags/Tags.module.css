@@ -1,0 +1,11 @@
+.tagWrapper {
+  display: flex;
+  gap: var(--spacing-0x5);
+  align-items: center;
+}
+
+.tag {
+  padding: var(--spacing-0x5);
+  background-color: var(--border-light);
+  border-radius: var(--border-radius-0x25);
+}

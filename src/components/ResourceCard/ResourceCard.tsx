@@ -1,4 +1,5 @@
 import type { TResource } from "../../types/global-types";
+import { Tags } from "../Tags/Tags";
 
 import styles from "./ResourceCard.module.css";
 
@@ -22,11 +23,7 @@ export const ResourceCard: React.FC<TResourceCardProps> = ({ resource }) => {
               <p className={styles.duration}>{resource.duration} mins</p>
             </div>
             <div className={styles.tagWrapper}>
-              {resource.tags.slice(0, 3).map((tag, index) => (
-                <span className={styles.tag} key={index}>
-                  {tag}
-                </span>
-              ))}
+              <Tags tags={resource.tags.slice(0, 3)} />
             </div>
             <p className={styles.readMoreLink}>Read more</p>
           </div>
