@@ -1,4 +1,8 @@
-import type { TGroupedResources, TResource } from "../types/global-types";
+import type {
+  TGroupedResources,
+  TResource,
+  TSortOption,
+} from "../types/global-types";
 
 // Take the array of resources and build an object that groups them by their category.
 export const groupResources = (resources: TResource[]): TGroupedResources => {
@@ -44,7 +48,17 @@ export const filterResources = (
 
 export const sortResources = (
   resources: TResource[],
-  sortBy: string,
+  sortBy: TSortOption,
 ): TResource[] => {
-  return [...resources];
+  return [...resources].sort((a, b) => {
+    if (sortBy === "category") {
+      return (
+        a.category.localeCompare(b.category) || a.title.localeCompare(b.title)
+      );
+    }
+
+    return (
+      new Date(b.date_uploaded).getTime() - new Date(a.date_uploaded).getTime()
+    );
+  });
 };

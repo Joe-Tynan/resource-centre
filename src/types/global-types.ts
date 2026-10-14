@@ -18,3 +18,5 @@ export type TResource = {
 };
 
 export type TGroupedResources = Partial<Record<TResourceCategory, TResource[]>>;
+
+export type TSortOption = "default" | "category" | "date";
