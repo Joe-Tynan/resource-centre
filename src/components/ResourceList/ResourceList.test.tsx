@@ -2,12 +2,17 @@ import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { mockResources } from "../../data/data";
 import { ResourceList } from "./ResourceList";
+import { MemoryRouter } from "react-router";
 
 afterEach(() => cleanup());
 
 describe("ResourceList", () => {
   it("renders resource titles", () => {
-    render(<ResourceList resources={mockResources} />);
+    render(
+      <MemoryRouter>
+        <ResourceList resources={mockResources} />
+      </MemoryRouter>,
+    );
 
     expect(screen.getByText("Mindful Moments")).toBeTruthy();
 
@@ -15,7 +20,11 @@ describe("ResourceList", () => {
   });
 
   it("renders category headings", () => {
-    render(<ResourceList resources={mockResources} />);
+    render(
+      <MemoryRouter>
+        <ResourceList resources={mockResources} />
+      </MemoryRouter>,
+    );
 
     expect(screen.getByRole("heading", { name: "Podcasts" })).toBeTruthy();
 
@@ -23,7 +32,11 @@ describe("ResourceList", () => {
   });
 
   it("handles an empty resource list", () => {
-    render(<ResourceList resources={[]} />);
+    render(
+      <MemoryRouter>
+        <ResourceList resources={[]} />
+      </MemoryRouter>,
+    );
 
     expect(screen.queryByRole("link")).toBeNull();
   });

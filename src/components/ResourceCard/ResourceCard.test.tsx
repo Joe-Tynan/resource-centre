@@ -1,5 +1,6 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import { mockResources } from "../../data/data";
 import { ResourceCard } from "./ResourceCard";
 
@@ -10,9 +11,11 @@ describe("ResourceCard", () => {
 
   it("renders the resource title and duration", () => {
     render(
-      <ul>
-        <ResourceCard resource={resource} />
-      </ul>,
+      <MemoryRouter>
+        <ul>
+          <ResourceCard resource={resource} />
+        </ul>
+      </MemoryRouter>,
     );
 
     expect(screen.getByRole("heading", { name: resource.title })).toBeTruthy();
@@ -22,9 +25,11 @@ describe("ResourceCard", () => {
 
   it("renders the thumbnail with appropriate alt text", () => {
     render(
-      <ul>
-        <ResourceCard resource={resource} />
-      </ul>,
+      <MemoryRouter>
+        <ul>
+          <ResourceCard resource={resource} />
+        </ul>
+      </MemoryRouter>,
     );
 
     expect(
@@ -36,9 +41,11 @@ describe("ResourceCard", () => {
 
   it("links to the correct resource detail page", () => {
     render(
-      <ul>
-        <ResourceCard resource={resource} />
-      </ul>,
+      <MemoryRouter>
+        <ul>
+          <ResourceCard resource={resource} />
+        </ul>
+      </MemoryRouter>,
     );
 
     expect(
@@ -48,14 +55,16 @@ describe("ResourceCard", () => {
 
   it("renders no more than three tags", () => {
     render(
-      <ul>
-        <ResourceCard
-          resource={{
-            ...resource,
-            tags: ["Sleep", "Health", "Wellbeing", "Lifestyle"],
-          }}
-        />
-      </ul>,
+      <MemoryRouter>
+        <ul>
+          <ResourceCard
+            resource={{
+              ...resource,
+              tags: ["Sleep", "Health", "Wellbeing", "Lifestyle"],
+            }}
+          />
+        </ul>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText("Sleep")).toBeTruthy();

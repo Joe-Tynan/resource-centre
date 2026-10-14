@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { TResource } from "../../types/global-types";
 import { Tags } from "../Tags/Tags";
 
@@ -10,7 +11,7 @@ type TResourceCardProps = {
 export const ResourceCard: React.FC<TResourceCardProps> = ({ resource }) => {
   return (
     <li key={resource.id}>
-      <a className={styles.link} href="#">
+      <Link className={styles.link} to={`/resource/${resource.id}`}>
         <article className={styles.article}>
           <img
             className={styles.thumbnail}
@@ -28,7 +29,7 @@ export const ResourceCard: React.FC<TResourceCardProps> = ({ resource }) => {
             <p className={styles.readMoreLink}>Read more</p>
           </div>
         </article>
-      </a>
+      </Link>
     </li>
   );
 };
