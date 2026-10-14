@@ -16,3 +16,5 @@ export type TResource = {
   description: string;
   date_uploaded: string;
 };
+
+export type TGroupedResources = Partial<Record<TResourceCategory, TResource[]>>;

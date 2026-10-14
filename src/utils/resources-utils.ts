@@ -1,3 +1,21 @@
-export function groupResources(resources: any[]) {
-  return {};
-}
+import type { TGroupedResources, TResource } from "../types/global-types";
+
+// Take the array of resources and build an object that groups them by their category.
+export const groupResources = (resources: TResource[]): TGroupedResources => {
+  const groupedResources: TGroupedResources = {};
+
+  for (let i = 0; i < resources.length; i++) {
+    const resource = resources[i];
+    const category = resource.category;
+
+    // If the property doesn't exist yet then create it and give it an empty array.
+    if (!groupedResources[category]) {
+      groupedResources[category] = [];
+    }
+
+    // Push the resource into the array that corresponds to it's category.
+    groupedResources[category].push(resource);
+  }
+
+  return groupedResources;
+};
